@@ -90,7 +90,6 @@ void setup() {
   
 }
 
-
 void loop() {
   // Read the line position (0 to 7000)
   uint16_t position = qtr.readLineBlack(sensorValues);
