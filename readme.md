@@ -97,9 +97,10 @@ Below are the details of each component and links to their libraries/documentati
 
 - **Connect the Arduino Nano** to your computer via USB for programming.
 - **Wire the QTR-8RC Sensor Array**:
-  - Connect the sensor outputs (`OUT1` to `OUT8`) to analog input pins (`A0` to `A7`) on the Arduino Nano.
-  - Provide power to the sensor array from the Arduino's `5V` and `GND` pins.
-  - If the sensor array has an emitter control pin (`CTRL`), connect it to a digital pin (e.g., `D13`) or tie it directly to `VIN` to keep the emitters always on.
+
+  - The sensor outputs (`OUT1` to `OUT8`) to analog input pins (`A0` to `A7`) on the Arduino Nano.
+  - `EMITTER_PIN`: Connect to Arduino's pin (`D13`).
+
 - **Motor Driver Connections (TB6612FNG)**:
   - **Inputs**:
     - `PWMA` (Motor A PWM): Connect to Arduino's PWM-capable pin (e.g., `D3`).
@@ -138,6 +139,46 @@ Below are the details of each component and links to their libraries/documentati
 4. **Test and Calibrate**:
    - Calibrate your sensors for optimal line detection.
    - Test your robot on the track and make adjustments as necessary.
+
+---
+
+### Troubleshooting: Arduino Nano Connection Issues
+
+**Problem:** Your PC does not recognize the Arduino Nano when you connect it via USB.
+
+**Solution:** Follow these steps to manually select the correct board and configure the bootloader.
+
+1. **Select the Correct Board and Processor:**
+
+   - Open the **Arduino IDE**.
+   - Navigate to **Tools** > **Board** > **Boards Manager**.
+   - In the Boards Manager, search for **"Arduino AVR Boards"** and ensure it's installed.
+   - Go to **Tools** > **Board** and select **"Arduino Nano"**.
+
+2. **Select the Appropriate Processor:**
+
+   - Under **Tools** > **Processor**, choose the processor that matches your Arduino Nano:
+     - **ATmega328P** (Old Bootloader) if the standard option doesn't work.
+     - If unsure, try **"ATmega168"** first.
+
+3. **Select the Correct COM Port:**
+
+   - Plug in your Arduino Nano via USB.
+   - Go to **Tools** > **Port** and select the COM port that corresponds to your Arduino Nano.
+   - If no COM port appears, try using a different USB cable or port.
+
+4. **Adjust the Bootloader Settings:**
+
+   - In some cases, the Nano might use an older bootloader.
+   - To switch bootloaders:
+     - Go to **Tools** > **Processor** and toggle between **"ATmega328P"** and **"ATmega328P (Old Bootloader)"**.
+     - Attempt to upload your sketch after each change.
+
+**Tips:**
+
+- Always ensure you have the latest version of the Arduino IDE.
+- Try different USB cables and ports to rule out hardware issues.
+- Restart the Arduino IDE after making changes to the board or processor settings.
 
 ---
 
