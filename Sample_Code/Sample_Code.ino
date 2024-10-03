@@ -30,7 +30,7 @@ L298N motorB(PWMB, BIN1, BIN2);
 const uint16_t CALIBRATION_COUNT = 400;      // Number of calibration iterations
 const uint16_t CALIBRATION_DELAY_US = 2500;  // Delay in microseconds between calibrations
 
-
+int baseSpeed = 180;
 void setup() {
   // Initialize Serial Communication for debugging
   Serial.begin(9600);
@@ -87,22 +87,22 @@ void setup() {
   }
   Serial.println("\nCalibration Complete.\n");
   
-  
+    motorA.setSpeed(baseSpeed); // Set Motor A to base speed
+    motorB.setSpeed(baseSpeed); // Set Motor B to base speed
 }
+
 
 void loop() {
   // Read the line position (0 to 7000)
   uint16_t position = qtr.readLineBlack(sensorValues);
   
-  // Set motor speeds
-  motorA.setSpeed(motorSpeedA);
-  motorB.setSpeed(motorSpeedB);
+
   
   // Example control logic: if a line is detected, set motors to base speed
   if (position > 0)
   {
-    motorA.setSpeed(baseSpeed); // Set Motor A to base speed
-    motorB.setSpeed(baseSpeed); // Set Motor B to base speed
+    motorA.forward(); 
+    motorB.forward(); 
   }
   // Debugging Information
   Serial.print("Position: ");
