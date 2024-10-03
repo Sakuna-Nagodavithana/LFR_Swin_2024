@@ -3,13 +3,17 @@
 #include <L298N.h>      // Library for controlling the L298N motor driver
 
 // Define motor control pins
-#define PWMA 3 // PWM control for Motor A speed
-#define AIN1 5 // Control pin 1 for Motor A direction
-#define AIN2 4 // Control pin 2 for Motor A direction
-#define PWMB 9 // PWM control for Motor B speed
-#define BIN1 7 // Control pin 1 for Motor B direction
-#define BIN2 8 // Control pin 2 for Motor B direction
-#define STBY 6 // Standby pin for the motor driver (if applicable)
+#define PWMA 4 // PWM control for Motor A speed
+#define AIN2 5 // Control pin 2 for Motor A direction
+#define AIN1 6  // Control pin 1 for Motor A direction
+#define STBY 7  // Standby pin for the motor driver (if applicable)
+#define BIN1 8  // Control pin 1 for Motor B direction
+#define BIN2 9  // Control pin 2 for Motor B direction
+#define PWMB 10 // PWM control for Motor B speed
+
+
+
+
 
 // Define QTR sensor pins
 const uint8_t SensorCount = 8;      // Number of QTR sensors
