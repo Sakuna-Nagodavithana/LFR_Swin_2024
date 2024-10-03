@@ -9,7 +9,8 @@
 #define STBY 7  // Standby pin for the motor driver (if applicable)
 #define BIN1 8  // Control pin 1 for Motor B direction
 #define BIN2 9  // Control pin 2 for Motor B direction
-#define PWMB 10 // PWM control for Motor B speed
+#define PWMB 10 // PWM control for Motor B 
+#define EMITTERPIN 13
 
 
 
@@ -36,7 +37,7 @@ void setup()
   // Configure the sensors
   qtr.setTypeAnalog();                                                               // Set the sensor type to analog
   qtr.setSensorPins((const uint8_t[]){A0, A1, A2, A3, A4, A5, A6, A7}, SensorCount); // Define sensor pins
-  qtr.setEmitterPin(13);                                                             // Set the emitter pin for the sensors
+  qtr.setEmitterPin(EMITERPIN);                                                             // Set the emitter pin for the sensors
 
   pinMode(STBY, OUTPUT);           // Set the standby pin as output
   pinMode(LED_BUILTIN, OUTPUT);    // Set the built-in LED pin as output
