@@ -102,17 +102,17 @@ Below are the details of each component and links to their libraries/documentati
   - If the sensor array has an emitter control pin (`CTRL`), connect it to a digital pin (e.g., `D13`) or tie it directly to `VIN` to keep the emitters always on.
 - **Motor Driver Connections (TB6612FNG)**:
   - **Inputs**:
-    - `PWMA` (Motor A PWM): Connect to Arduino's PWM-capable pin (e.g., `D4`).
-    - `AIN1`, `AIN2` (Motor A Control): Connect to digital pins (e.g., `D6`, `D5`).
-    - `PWMB` (Motor B PWM): Connect to another PWM-capable pin (e.g., `D10`).
-    - `BIN1`, `BIN2` (Motor B Control): Connect to digital pins (e.g., `D8`, `D9`).
-    - `STBY` (Standby): Connect to a digital pin (e.g., `D7`), set to `HIGH` to enable the driver.
-    - `EMITTERPIN` : Connected to digital pins (e.g., `D13`)
+    - `PWMA` (Motor A PWM): Connect to Arduino's PWM-capable pin (e.g., `D3`).
+    - `AIN1`, `AIN2` (Motor A Control): Connect to digital pins (e.g., `D5`, `D4`).
+    - `PWMB` (Motor B PWM): Connect to another PWM-capable pin (e.g., `D9`).
+    - `BIN1`, `BIN2` (Motor B Control): Connect to digital pins (e.g., `D7`, `D8`).
+    - `STBY` (Standby): Connect to a digital pin (e.g., `D6`), set to `HIGH` to enable the driver.
   - **Outputs**:
     - `A01`, `A02`: Connect to the terminals of Motor A.
     - `B01`, `B02`: Connect to the terminals of Motor B.
   - **Power**:
     - Connect the battery to the USB mini terminal
+
 ---
 
 ## Getting Started
