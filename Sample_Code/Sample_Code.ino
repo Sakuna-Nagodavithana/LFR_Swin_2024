@@ -96,16 +96,18 @@ void loop() {
   // Read the line position (0 to 7000)
   uint16_t position = qtr.readLineBlack(sensorValues);
   
-
+  motorA.forward(); 
+  motorB.forward(); 
   
   // Example control logic: if a line is detected, set motors to base speed
-  if (position > 0)
+  if (position == 0)
   {
-    motorA.forward(); 
-    motorB.forward(); 
+    motorA.stop(); 
+    motorB.stop(); 
   }
+  
   // Debugging Information
   Serial.print("Position: ");
-  Serial.print(position);
+  Serial.println(position);
 
 }
