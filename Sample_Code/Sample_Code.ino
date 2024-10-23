@@ -9,7 +9,7 @@
 #define BIN1 8    // Direction control for Motor B
 #define BIN2 9    // Direction control for Motor B
 #define PWMB 10   // PWM control for Motor B
-
+#define NUM_OF_ROTATIONS 5
 
 #define NUM_SENSORS   8           // Number of QTR sensors
 #define EMITTER_PIN   13         // Emitter control pin
@@ -27,8 +27,9 @@ L298N motorB(PWMB, BIN1, BIN2);
 
 
 
-const uint16_t CALIBRATION_COUNT = 400;      // Number of calibration iterations
 const uint16_t CALIBRATION_DELAY_US = 2500;  // Delay in microseconds between calibrations
+unsigned long rotationTime = 1860;
+
 
 int baseSpeed = 180;
 void setup() {
@@ -55,19 +56,19 @@ void setup() {
   // Start rotating left to assist calibration
   motorA.setSpeed(baseSpeed);
   motorB.setSpeed(baseSpeed);
-  motorA.forward();
-  motorB.backward(); // Rotate left
-  
-  // Calibration Phase (approximately 10 seconds)
-  Serial.println("Calibrating QTR-8 sensors while rotating...");
-  for (uint16_t i = 0; i < CALIBRATION_COUNT; i++) {
-    qtr.calibrate();
-    delayMicroseconds(CALIBRATION_DELAY_US);
+  for (int i = 0; i < NUM_OF_ROTATIONS; i++) {
+    unsigned long startTime = millis();
+    while (millis() - startTime < rotationTime) {
+      //Serial.println("rotating...");
+      motorA.forward();
+      motorB.backward();  // Rotate left
+      qtr.calibrate();
+      delayMicroseconds(CALIBRATION_DELAY_US);
+      // Stop rotation after calibration
+      motorA.stop();
+      motorB.stop();
+    }
   }
-
-  // Stop rotation after calibration
-  motorA.stop();
-  motorB.stop();
 
   // Indicate calibration is complete by turning off the built-in LED
   digitalWrite(LED_BUILTIN, LOW); // Turn off LED after calibration
